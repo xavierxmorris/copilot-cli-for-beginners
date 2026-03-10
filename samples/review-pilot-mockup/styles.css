@@ -1,0 +1,429 @@
+/* ── Reset & Base ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0 2rem;
+  height: 56px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar__brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-right: 2rem;
+}
+
+.navbar__brand span {
+  color: #4267b2;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.navbar__links a:hover {
+  color: #4267b2;
+}
+
+.navbar__search {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__search input {
+  padding: 0.45rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 260px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.navbar__icons {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.btn {
+  padding: 0.6rem 1.6rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn--primary {
+  background: #4267b2;
+  color: #fff;
+}
+
+.btn--outline {
+  background: #fff;
+  color: #333;
+  border-color: #ccc;
+}
+
+.hero__stats {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.hero__stats span {
+  margin: 0 0.5rem;
+}
+
+/* ── Main Layout ──────────────────────────────────────────── */
+.main {
+  display: flex;
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid #e0e0e0;
+  align-self: flex-start;
+}
+
+.sidebar h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar__group {
+  margin-bottom: 1.25rem;
+}
+
+.sidebar__group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.35rem;
+}
+
+.sidebar__group select,
+.sidebar__group input[type="text"] {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.sidebar__price {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sidebar__price input {
+  width: 50%;
+}
+
+.sidebar__categories {
+  list-style: none;
+}
+
+.sidebar__categories li {
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.sidebar__categories input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.sidebar__search {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar__buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sidebar__buttons .btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.btn--reset {
+  background: #fff;
+  border-color: #ccc;
+  color: #333;
+}
+
+/* ── Results Area ─────────────────────────────────────────── */
+.results {
+  flex: 1;
+}
+
+.results__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.results__count {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.results__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.view-toggle button {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.view-toggle button.active {
+  background: #eee;
+}
+
+.btn--compare {
+  background: #4267b2;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* ── Active Filters ───────────────────────────────────────── */
+.active-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eef1f7;
+  border: 1px solid #cdd5e0;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.82rem;
+  color: #4267b2;
+}
+
+.filter-tag .remove {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ── Product Card ─────────────────────────────────────────── */
+.product-card {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.product-card__image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.product-card__info {
+  flex: 1;
+}
+
+.product-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.product-card__brand {
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 0.4rem;
+}
+
+.product-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.product-card__info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.rating-score {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.stars {
+  color: #f5a623;
+  font-size: 0.9rem;
+}
+
+.review-count {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.product-card__summary {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.35rem 0;
+}
+
+.product-card__pros-cons {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
+.pro {
+  color: #2e9e5a;
+}
+
+.con {
+  color: #d9534f;
+}
+
+.pro::before {
+  content: "● ";
+}
+
+.con::before {
+  content: "● ";
+}
+
+/* ── Price Column ─────────────────────────────────────────── */
+.product-card__price-col {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.availability {
+  font-size: 0.8rem;
+  color: #2e9e5a;
+  margin: 0.2rem 0 0.75rem;
+}
+
+.availability::before {
+  content: "✔ ";
+}
+
+.btn--review {
+  display: inline-block;
+  padding: 0.45rem 1.2rem;
+  border: 1px solid #d9534f;
+  color: #d9534f;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn--review:hover {
+  background: #d9534f;
+  color: #fff;
+}
