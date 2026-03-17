@@ -42,10 +42,11 @@ class TestValidInput:
         _, _, year = get_book_details()
         assert year == 0
 
-    def test_negative_year(self, monkeypatch):
+    def test_negative_year_defaults_to_zero(self, monkeypatch, capsys):
         _simulate_input(monkeypatch, ["Ancient Text", "Unknown", "-500"])
         _, _, year = get_book_details()
-        assert year == -500
+        assert year == 0
+        assert "Year must be between" in capsys.readouterr().out
 
     def test_returns_tuple(self, monkeypatch):
         _simulate_input(monkeypatch, ["T", "A", "2000"])
@@ -123,10 +124,11 @@ class TestInvalidYearFormats:
         _, _, year = get_book_details()
         assert year == 0
 
-    def test_very_large_year_accepted(self, monkeypatch):
+    def test_very_large_year_rejected(self, monkeypatch, capsys):
         _simulate_input(monkeypatch, ["Title", "Author", "99999"])
         _, _, year = get_book_details()
-        assert year == 99999
+        assert year == 0
+        assert "Year must be between" in capsys.readouterr().out
 
     def test_error_message_printed(self, monkeypatch, capsys):
         _simulate_input(monkeypatch, ["Title", "Author", "nope"])

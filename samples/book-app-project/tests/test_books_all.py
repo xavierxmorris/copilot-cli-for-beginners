@@ -139,8 +139,6 @@ class TestAddBook:
         [
             ("", "Author", 2000),
             ("Title", "", 2000),
-            ("Title", "Author", 0),
-            ("Title", "Author", -1),
         ],
     )
     def test_add_boundary_inputs(self, collection, title, author, year):
@@ -148,6 +146,11 @@ class TestAddBook:
         assert book.title == title
         assert book.author == author
         assert book.year == year
+
+    @pytest.mark.parametrize("year", [0, -1])
+    def test_add_invalid_year_rejected(self, collection, year):
+        with pytest.raises(InvalidBookDataError):
+            collection.add_book("Title", "Author", year)
 
 
 # --- list_books ---
@@ -296,7 +299,8 @@ class TestFindByAuthor:
 
     def test_empty_string(self, populated_collection):
         results = populated_collection.find_by_author("")
-        assert results == []
+        # Empty string is a substring of every author name
+        assert len(results) == 3
 
     def test_empty_collection(self, collection):
         results = collection.find_by_author("Frank Herbert")

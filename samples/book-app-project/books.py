@@ -1,6 +1,7 @@
 import json
 from contextlib import contextmanager
 from dataclasses import dataclass, asdict
+from datetime import datetime
 from typing import Generator, List, Optional
 
 DATA_FILE = "data.json"
@@ -129,10 +130,13 @@ class BookCollection:
         Args:
             title: The book's title.
             author: The book's author.
-            year: The publication year.
+            year: The publication year (must be between 1 and next year).
 
         Returns:
             The newly created Book instance.
+
+        Raises:
+            InvalidBookDataError: If year is out of valid range.
 
         Example::
 
@@ -141,6 +145,11 @@ class BookCollection:
             >>> book.title
             '1984'
         """
+        max_year = datetime.now().year + 1
+        if year < 1 or year > max_year:
+            raise InvalidBookDataError(
+                f"Year must be between 1 and {max_year}."
+            )
         book = Book(title=title, author=author, year=year)
         self.books.append(book)
         self.save_books()
@@ -257,4 +266,4 @@ class BookCollection:
             >>> collection.find_by_author("frank herbert")
             [Book(title='Dune', author='Frank Herbert', year=1965, read=False)]
         """
-        return [b for b in self.books if b.author.lower() == author.lower()]
+        return [b for b in self.books if author.lower() in b.author.lower()]

@@ -40,10 +40,11 @@ class TestHyphenatedAuthors:
         collection.add_book("Nausea", "Jean-Paul Sartre", 1938)
         assert len(collection.find_by_author("jean-paul sartre")) == 1
 
-    def test_partial_hyphenated_name_no_match(self, collection):
+    def test_partial_hyphenated_name_matches(self, collection):
         collection.add_book("Nausea", "Jean-Paul Sartre", 1938)
-        assert collection.find_by_author("Jean-Paul") == []
-        assert collection.find_by_author("Sartre") == []
+        # Partial match now supported
+        assert len(collection.find_by_author("Jean-Paul")) == 1
+        assert len(collection.find_by_author("Sartre")) == 1
 
     def test_double_hyphen(self, collection):
         collection.add_book("Test", "Anne-Marie Claire-Dubois", 2000)
@@ -64,9 +65,11 @@ class TestMultipleFirstNames:
         collection.add_book("The Hobbit", "John Ronald Reuel Tolkien", 1937)
         assert len(collection.find_by_author("john ronald reuel tolkien")) == 1
 
-    def test_partial_multipart_no_match(self, collection):
+    def test_partial_multipart_matches(self, collection):
         collection.add_book("The Hobbit", "John Ronald Reuel Tolkien", 1937)
-        assert collection.find_by_author("Tolkien") == []
+        # Partial match now supported
+        assert len(collection.find_by_author("Tolkien")) == 1
+        # "John Tolkien" is NOT a contiguous substring, so no match
         assert collection.find_by_author("John Tolkien") == []
 
     def test_initials_style_name(self, collection):
@@ -80,9 +83,10 @@ class TestMultipleFirstNames:
 
 class TestEmptyAuthor:
 
-    def test_empty_string_no_match(self, collection):
+    def test_empty_string_matches_all(self, collection):
         collection.add_book("Dune", "Frank Herbert", 1965)
-        assert collection.find_by_author("") == []
+        # Empty string is a substring of every string
+        assert len(collection.find_by_author("")) == 1
 
     def test_empty_string_matches_empty_author(self, collection):
         collection.add_book("Anonymous Work", "", 1800)

@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from datetime import datetime
 from books import Book, InvalidBookDataError
 
 
@@ -18,11 +19,28 @@ def format_book_detail(index: int, book: Book) -> str:
 
 
 def parse_year(year_str: str) -> int:
-    """Parse a year string into an integer."""
+    """Parse a year string into an integer and validate the range.
+
+    Args:
+        year_str: The year as a string.
+
+    Returns:
+        The parsed year as an integer.
+
+    Raises:
+        InvalidBookDataError: If the string is not numeric or the
+            year is outside the valid range (1 to next year).
+    """
     try:
-        return int(year_str)
+        year = int(year_str)
     except ValueError:
         raise InvalidBookDataError("Invalid year. Defaulting to 0.") from None
+    max_year = datetime.now().year + 1
+    if year < 1 or year > max_year:
+        raise InvalidBookDataError(
+            f"Year must be between 1 and {max_year}."
+        )
+    return year
 
 
 # --- Display functions (handle all I/O) ---

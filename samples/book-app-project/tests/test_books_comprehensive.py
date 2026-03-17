@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest
 import books
-from books import Book, BookCollection, BookNotFoundError, StorageError
+from books import Book, BookCollection, BookNotFoundError, InvalidBookDataError, StorageError
 
 
 # --- Fixtures ---
@@ -90,14 +90,17 @@ class TestAddBook:
     @pytest.mark.parametrize("title,author,year", [
         ("", "Author", 2000),
         ("Title", "", 2000),
-        ("Title", "Author", 0),
-        ("Title", "Author", -1),
     ])
     def test_accepts_edge_case_inputs(self, collection, title, author, year):
         book = collection.add_book(title, author, year)
         assert book.title == title
         assert book.author == author
         assert book.year == year
+
+    @pytest.mark.parametrize("year", [0, -1])
+    def test_rejects_invalid_year(self, collection, year):
+        with pytest.raises(InvalidBookDataError):
+            collection.add_book("Title", "Author", year)
 
 
 # --- Removing books ---
@@ -191,7 +194,8 @@ class TestFindByAuthor:
         assert collection.find_by_author("Anyone") == []
 
     def test_empty_string(self, populated_collection):
-        assert populated_collection.find_by_author("") == []
+        # Empty string is a substring of every author name
+        assert len(populated_collection.find_by_author("")) == 3
 
 
 # --- Marking as read ---
