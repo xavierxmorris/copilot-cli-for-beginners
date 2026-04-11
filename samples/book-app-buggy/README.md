@@ -34,9 +34,12 @@ This directory contains an intentionally buggy version of the book collection ap
 ```bash
 copilot
 
-> @samples/book-app-buggy/books_buggy.py Users report that searching for
-> "The Hobbit" returns no results even though it's in the data. Debug why.
+# Pattern: "Expected X but got Y"
+> @samples/book-app-buggy/books_buggy.py Users report that searching for "The Hobbit" returns no results even though it's in the data. Debug why.
 
-> @samples/book-app-buggy/book_app_buggy.py When I remove a book that
-> doesn't exist, the app says it was removed. Help me find why.
+# Pattern: "Unexpected behavior"
+> @samples/book-app-buggy/book_app_buggy.py When I remove a book that doesn't exist, the app says it was removed. Help me find why.
+
+# Pattern: "Wrong results"
+> @samples/book-app-buggy/books_buggy.py When I mark one book as read, ALL books get marked. What's the bug?
 ```
