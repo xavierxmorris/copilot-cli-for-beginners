@@ -20,6 +20,7 @@ cp -r code-checklist .github/skills/
 | `code-checklist` | Python code quality checklist (PEP 8, type hints, validation) | Consistent quality checks |
 | `pytest-gen` | Generate comprehensive pytest tests | Structured test generation |
 | `commit-message` | Conventional commit messages | Standardized git history |
+| `review` | Code review on staged/unstaged changes with optional focus area | Pre-commit reviews, security checks |
 
 ## How Skills Work
 
