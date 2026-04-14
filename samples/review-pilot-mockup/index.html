@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReviewPilot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar__brand"><span>Review</span>Pilot</div>
+  <ul class="navbar__links">
+    <li><a href="#">Reviews</a></li>
+    <li><a href="#">Categories</a></li>
+    <li><a href="#">Top Rated</a></li>
+  </ul>
+  <div class="navbar__search">
+    <input type="text" placeholder="Search products, brands, categories">
+    <div class="navbar__icons">
+      <span>🔔</span>
+      <span>👤</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Find the best products, faster.</h1>
+  <p>Expert summaries, real user feedback, and side-by-side comparisons.</p>
+  <div class="hero__actions">
+    <button class="btn btn--primary">Browse Top Reviews</button>
+    <button class="btn btn--outline">Compare Products</button>
+  </div>
+  <div class="hero__stats">
+    <span>· <strong>10,000+</strong> reviews</span>
+    <span>· Updated weekly</span>
+    <span>· Transparent scoring</span>
+  </div>
+</section>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>Filter &amp; Sort</h3>
+
+    <div class="sidebar__group">
+      <label>Sort by</label>
+      <select>
+        <option>Best overall</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+      </select>
+    </div>
+
+    <div class="sidebar__group">
+      <label>Minimum Rating ⭐⭐ up</label>
+    </div>
+
+    <div class="sidebar__group">
+      <label>Price Range</label>
+      <div class="sidebar__price">
+        <input type="text" placeholder="Min $">
+        <input type="text" placeholder="Max $">
+      </div>
+    </div>
+
+    <div class="sidebar__group">
+      <ul class="sidebar__categories">
+        <li><input type="checkbox"> Laptops</li>
+        <li><input type="checkbox"> Headphones</li>
+        <li><input type="checkbox"> Smart Home</li>
+        <li><input type="checkbox"> Kitchen</li>
+        <li><input type="checkbox"> Fitness</li>
+        <li><input type="checkbox"> Gaming</li>
+      </ul>
+    </div>
+
+    <input type="text" class="sidebar__search" placeholder="Read review...  🔍">
+
+    <div class="sidebar__buttons">
+      <button class="btn btn--primary">Apply</button>
+      <button class="btn btn--reset">Reset</button>
+    </div>
+  </aside>
+
+  <!-- Results -->
+  <section class="results">
+    <div class="results__header">
+      <span class="results__count">Showing 24 results</span>
+      <div class="results__controls">
+        <div class="view-toggle">
+          <button class="active">▦</button>
+          <button>☰</button>
+        </div>
+        <button class="btn btn--compare">♡ Compare (0) &gt;</button>
+      </div>
+    </div>
+
+    <div class="active-filters">
+      <span class="filter-tag">⭐ 4★ up <span class="remove">×</span></span>
+      <span class="filter-tag">💻 Laptops <span class="remove">×</span></span>
+    </div>
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-card__image" style="background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:2rem;">💻</div>
+      <div class="product-card__info">
+        <div class="product-card__info-row">
+          <div>
+            <div class="product-card__title">ArcLight X15 Laptop</div>
+            <div class="product-card__brand">Zyrella · Laptops</div>
+          </div>
+          <div class="product-card__rating">
+            <span class="rating-score">4.7</span>
+            <span class="stars">★★★★½</span>
+            <span class="review-count">1,205 reviews</span>
+          </div>
+        </div>
+        <div class="product-card__summary">🟢 Excellent performance and build quality, but battery life is average.</div>
+        <div class="product-card__pros-cons">
+          <span class="pro">Fast performance</span>
+          <span class="pro">High-res display</span>
+          <span class="con">Pugtores 3</span>
+        </div>
+      </div>
+      <div class="product-card__price-col">
+        <div class="price">$1,199</div>
+        <div class="availability">In Store</div>
+        <button class="btn--review">Read Review &gt;</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-card__image" style="background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:2rem;">🔊</div>
+      <div class="product-card__info">
+        <div class="product-card__info-row">
+          <div>
+            <div class="product-card__title">Lumina Smart Speaker</div>
+            <div class="product-card__brand">Sonira · Smart Home</div>
+          </div>
+          <div class="product-card__rating">
+            <span class="rating-score">4.5</span>
+            <span class="stars">★★★★½</span>
+            <span class="review-count">992 reviews</span>
+          </div>
+        </div>
+        <div class="product-card__summary">🟢 Rich sound quality and easy setup, but lacks some app integrations.</div>
+        <div class="product-card__pros-cons">
+          <span class="pro">Rich sound</span>
+          <span class="pro">Easy setup</span>
+          <span class="con">No voice profiles</span>
+        </div>
+      </div>
+      <div class="product-card__price-col">
+        <div class="price">$129</div>
+        <div class="availability">In Store</div>
+        <button class="btn--review">Read Review &gt;</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-card__image" style="background:#f0f0f0; display:flex; align-items:center; justify-content:center; font-size:2rem;">🍳</div>
+      <div class="product-card__info">
+        <div class="product-card__info-row">
+          <div>
+            <div class="product-card__title">BreezeBlend Air Fryer</div>
+            <div class="product-card__brand">Airviva · Kitchen</div>
+          </div>
+          <div class="product-card__rating">
+            <span class="rating-score">4.6</span>
+            <span class="stars">★★★★½</span>
+            <span class="review-count">617 reviews</span>
+          </div>
+        </div>
+        <div class="product-card__summary">🟢 Great for quick, healthy meals, but small capacity.</div>
+        <div class="product-card__pros-cons">
+          <span class="con">Small capacity</span>
+          <span class="con">Gets hot outside</span>
+          <span class="con">Pugtorek: 1</span>
+        </div>
+      </div>
+      <div class="product-card__price-col">
+        <div class="price">$89</div>
+        <div class="availability">In Store</div>
+        <button class="btn--review">Read Review &gt;</button>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+</body>
+</html>
