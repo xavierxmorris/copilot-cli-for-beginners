@@ -11,13 +11,18 @@ def get_user_choice() -> str:
     return input("Choose an option (1-5): ").strip()
 
 
+def parse_year(year_input: str) -> int:
+    """Parse a year string into an integer. Raises ValueError for non-numeric input."""
+    return int(year_input)
+
+
 def get_book_details():
     title = input("Enter book title: ").strip()
     author = input("Enter author: ").strip()
 
     year_input = input("Enter publication year: ").strip()
     try:
-        year = int(year_input)
+        year = parse_year(year_input)
     except ValueError:
         print("Invalid year. Defaulting to 0.")
         year = 0
