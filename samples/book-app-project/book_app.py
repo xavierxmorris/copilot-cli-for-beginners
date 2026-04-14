@@ -1,24 +1,10 @@
 import sys
-from books import BookCollection
+from books import BookCollection, BookError, BookNotFoundError
+from utils import show_books
 
 
 # Global collection instance
 collection = BookCollection()
-
-
-def show_books(books):
-    """Display books in a user-friendly format."""
-    if not books:
-        print("No books found.")
-        return
-
-    print("\nYour Book Collection:\n")
-
-    for index, book in enumerate(books, start=1):
-        status = "✓" if book.read else " "
-        print(f"{index}. [{status}] {book.title} by {book.author} ({book.year})")
-
-    print()
 
 
 def handle_list():
@@ -37,6 +23,8 @@ def handle_add():
         year = int(year_str) if year_str else 0
         collection.add_book(title, author, year)
         print("\nBook added successfully.\n")
+    except BookError as e:
+        print(f"\nError: {e}\n")
     except ValueError as e:
         print(f"\nError: {e}\n")
 
@@ -45,9 +33,11 @@ def handle_remove():
     print("\nRemove a Book\n")
 
     title = input("Enter the title of the book to remove: ").strip()
-    collection.remove_book(title)
-
-    print("\nBook removed if it existed.\n")
+    try:
+        collection.remove_book(title)
+        print("\nBook removed successfully.\n")
+    except BookNotFoundError as e:
+        print(f"\n{e}\n")
 
 
 def handle_find():
@@ -72,23 +62,25 @@ Commands:
 """)
 
 
+COMMANDS = {
+    "list": handle_list,
+    "add": handle_add,
+    "remove": handle_remove,
+    "find": handle_find,
+    "help": show_help,
+}
+
+
 def main():
     if len(sys.argv) < 2:
         show_help()
         return
 
     command = sys.argv[1].lower()
+    handler = COMMANDS.get(command)
 
-    if command == "list":
-        handle_list()
-    elif command == "add":
-        handle_add()
-    elif command == "remove":
-        handle_remove()
-    elif command == "find":
-        handle_find()
-    elif command == "help":
-        show_help()
+    if handler:
+        handler()
     else:
         print("Unknown command.\n")
         show_help()
