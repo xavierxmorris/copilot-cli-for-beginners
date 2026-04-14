@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "year": 1965,
+    "read": false
+  },
+  {
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "year": 1984,
+    "read": true
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guin",
+    "year": 1969,
+    "read": false
+  }
+]
